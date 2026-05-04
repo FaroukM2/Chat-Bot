@@ -10,8 +10,13 @@ client/build/
 .env
 server/.env
 
-# SQLite database
+# SQLite database (all locations)
 server/database.sqlite
+database.sqlite
+*.sqlite
+
+# Scratch/utility scripts
+scratch/
 
 # Logs
 *.log
