@@ -3,8 +3,10 @@ import Chat from "./Chat";
 import Login from "./pages/Login";
 
 function App() {
-  // لا نقرأ من localStorage تلقائياً — المستخدم يسجّل دخوله يدوياً كل مرة
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -16,7 +18,7 @@ function App() {
       {!user ? (
         <Login setUser={setUser} />
       ) : (
-        <Chat user={user} onLogout={handleLogout} />
+        <Chat user={user} onLogout={handleLogout} setUser={setUser} />
       )}
     </>
   );

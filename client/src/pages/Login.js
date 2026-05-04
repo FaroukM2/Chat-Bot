@@ -26,7 +26,7 @@ function Login({ setUser }) {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post("/api/auth/login", {
         username,
         password,
       });
@@ -45,7 +45,7 @@ function Login({ setUser }) {
     setLoading(true);
     setError("");
     try {
-      await axios.post("http://localhost:5000/api/auth/register", {
+      await axios.post("/api/auth/register", {
         username,
         password,
       });
@@ -77,7 +77,7 @@ function Login({ setUser }) {
         bottom: "-80px", right: "-80px", borderRadius: "50%", pointerEvents: "none"
       }} />
 
-      <div className="glass-card p-5" style={{ width: "420px", position: "relative", zIndex: 1 }}>
+      <div className="glass-card login-card p-4 p-md-5" style={{ position: "relative", zIndex: 1 }}>
 
         {/* Logo */}
         <div className="text-center mb-4">
@@ -135,17 +135,17 @@ function Login({ setUser }) {
           </div>
         )}
 
-        {/* Fields */}
         <div className="mb-3">
           <label className="form-label small fw-bold mb-1" style={{ color: "var(--text-muted)", letterSpacing: "0.8px" }}>
             USERNAME
           </label>
           <input
-            className="form-control custom-input"
+            className="form-control border-0 text-white shadow-none"
             placeholder="Enter your username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && (mode === "login" ? handleLogin() : handleRegister())}
+            style={{ background: "rgba(255,255,255,0.05)", borderRadius: "12px", padding: "12px 15px" }}
           />
         </div>
 
@@ -155,11 +155,12 @@ function Login({ setUser }) {
           </label>
           <input
             type="password"
-            className="form-control custom-input"
+            className="form-control border-0 text-white shadow-none"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && (mode === "login" ? handleLogin() : handleRegister())}
+            style={{ background: "rgba(255,255,255,0.05)", borderRadius: "12px", padding: "12px 15px" }}
           />
         </div>
 

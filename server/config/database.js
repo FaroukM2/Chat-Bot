@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 // create SQLite database
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: "./database.sqlite", // file-based DB
+  storage: process.env.NODE_ENV === "production" ? "/data/database.sqlite" : "./database.sqlite",
 });
 
 module.exports = sequelize;
